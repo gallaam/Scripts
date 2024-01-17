@@ -1,0 +1,193 @@
+[
+  {
+    "type": "closeOtherPage",
+    "config": {}
+  },
+  {
+    "type": "newPage",
+    "config": {}
+  },
+  {
+    "type": "gotoUrl",
+    "config": {
+      "url": "https://well3.com/mission",
+      "timeout": 30000,
+      "remark": ""
+    }
+  },
+  {
+    "type": "waitTime",
+    "config": {
+      "timeoutType": "fixedValue",
+      "timeout": 10000,
+      "timeoutMin": 1000,
+      "timeoutMax": 300000,
+      "remark": ""
+    }
+  },
+  {
+    "type": "waitForSelector",
+    "config": {
+      "selectorRadio": "XPath",
+      "selector": "/html/body/div/div[1]/main/section[1]/div[3]/div[2]/div[1]/div[1]/div/div/div[1]/div/div/div[5]/div[2]/button",
+      "serial": 1,
+      "isShow": "1",
+      "timeout": 30000,
+      "variable": "",
+      "remark": ""
+    }
+  },
+  {
+    "type": "click",
+    "config": {
+      "selectorRadio": "XPath",
+      "selector": "/html/body/div/div[1]/main/section[1]/div[3]/div[2]/div[1]/div[1]/div/div/div[1]/div/div/div[5]/div[2]/button",
+      "selectorType": "selector",
+      "element": "",
+      "serialType": "fixedValue",
+      "serial": 1,
+      "serialMin": 1,
+      "serialMax": 50,
+      "button": "left",
+      "type": "dblclick",
+      "remark": ""
+    }
+  },
+  {
+    "type": "waitTime",
+    "config": {
+      "timeoutType": "fixedValue",
+      "timeout": 10000,
+      "timeoutMin": 1000,
+      "timeoutMax": 300000,
+      "remark": ""
+    }
+  },
+  {
+    "type": "waitForSelector",
+    "config": {
+      "selectorRadio": "CSS",
+      "selector": ".swiper-slide-active[style='margin-right\\3A \\ 32px\\;'] .px-4",
+      "serial": 1,
+      "isShow": "1",
+      "timeout": 30000,
+      "variable": "",
+      "remark": ""
+    }
+  },
+  {
+    "type": "click",
+    "config": {
+      "selectorRadio": "CSS",
+      "selector": ".swiper-slide-active[style='margin-right\\3A \\ 32px\\;'] .px-4",
+      "selectorType": "selector",
+      "element": "",
+      "serialType": "fixedValue",
+      "serial": 1,
+      "serialMin": 1,
+      "serialMax": 50,
+      "button": "left",
+      "type": "click",
+      "remark": ""
+    }
+  },
+  {
+    "type": "waitTime",
+    "config": {
+      "timeoutType": "fixedValue",
+      "timeout": 10000,
+      "timeoutMin": 1000,
+      "timeoutMax": 300000,
+      "remark": ""
+    }
+  },
+  {
+    "type": "waitForSelector",
+    "config": {
+      "selectorRadio": "XPath",
+      "selector": "/html/body/div/div[1]/main/div[3]/div/div/button",
+      "serial": 1,
+      "isShow": "1",
+      "timeout": 30000,
+      "variable": "",
+      "remark": ""
+    }
+  },
+  {
+    "type": "click",
+    "config": {
+      "selectorRadio": "XPath",
+      "selector": "/html/body/div/div[1]/main/div[3]/div/div/button",
+      "selectorType": "selector",
+      "element": "",
+      "serialType": "fixedValue",
+      "serial": 1,
+      "serialMin": 1,
+      "serialMax": 50,
+      "button": "left",
+      "type": "click",
+      "remark": ""
+    }
+  },
+  {
+    "type": "waitTime",
+    "config": {
+      "timeoutType": "fixedValue",
+      "timeout": 31000,
+      "timeoutMin": 1000,
+      "timeoutMax": 300000,
+      "remark": ""
+    }
+  },
+  {
+    "type": "waitForSelector",
+    "config": {
+      "selectorRadio": "XPath",
+      "selector": "/html/body/div/div[1]/main/div[3]/div/div/button",
+      "serial": 1,
+      "isShow": "1",
+      "timeout": 30000,
+      "variable": "",
+      "remark": ""
+    }
+  },
+  {
+    "type": "click",
+    "config": {
+      "selectorRadio": "XPath",
+      "selector": "/html/body/div/div[1]/main/div[3]/div/div/button",
+      "selectorType": "selector",
+      "element": "",
+      "serialType": "fixedValue",
+      "serial": 1,
+      "serialMin": 1,
+      "serialMax": 50,
+      "button": "left",
+      "type": "click",
+      "remark": ""
+    }
+  },
+  {
+    "type": "waitTime",
+    "config": {
+      "timeoutType": "fixedValue",
+      "timeout": 10000,
+      "timeoutMin": 1000,
+      "timeoutMax": 300000,
+      "remark": ""
+    }
+  },
+  {
+    "type": "screenshotPage",
+    "config": {
+      "name": "${serial_number}",
+      "path": "",
+      "url": "",
+      "quality": 50,
+      "format": "png",
+      "fullPage": "1",
+      "remark": "",
+      "type": "default"
+    }
+  }
+]
