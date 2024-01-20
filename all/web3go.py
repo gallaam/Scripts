@@ -11,8 +11,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 import random
 from selenium.webdriver.chrome.service import Service
 
-ref_code='f2d8dda051a1b8fa'
-metamask_password='pnwMY59O'
+ref_code=''
+metamask_password=''
 xpath_login = "//div[contains(@class, 'CustomBtn_primary__su8cB')]"
 xpath_active = "//span[contains(@class, 'planetHeader_address__XJvdd')]"
 xpath_check = "//div[contains(@class, 'planetHeader_hLeft__2ZEW8')]"
@@ -83,6 +83,7 @@ def try_xpath(xpath, click=False, str='', sec=3):
 			debug('try_xpath click')
 			element = WebDriverWait(driver, sec).until(ec.presence_of_element_located((By.XPATH, xpath)))
 			driver.execute_script("return arguments[0].scrollIntoView();", element)
+			debug(element.text)
 			element.click()
 		else:
 			debug(f'try_xpath: {xpath}')
@@ -119,7 +120,149 @@ def try_task():
 			log(f'+ collect')
 		else:
 			log(f'+ already collected')
-		time.sleep(10)
+		t=0
+		while t!=1:
+			if try_xpath("//a[@class='MoreTasksComponent_style_actionBtn__122z7']", True):
+				
+				while True:
+					elements = WebDriverWait(driver, 5).until(
+						ec.presence_of_all_elements_located((By.XPATH, "//span[@class='style_text__JS9Hv']"))
+					)
+					# Проходим по списку элементов и сохраняем текст в массив
+					y=0
+					for element in elements:
+						log(element.text)
+						log(elements[y-1].text=='Lifeform token airdrop in the future' and element.text=='All of the above')
+						log(elements[y-1].text)
+						log(element.text)
+						
+						#Yuliverse Fundamentals Quiz
+						if element.text=='Purification of Terra  with Yuli common or above NFT (LV50)':
+							element.click()
+							log(f'+ Yuliverse Fundamentals Quiz begin')
+							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
+							break
+						if element.text=='https://special-event.yuliverse.com/' and elements[y+1].text=='https://special-event.yuliverse.com/sales/SkyTree':
+							element.click()
+							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
+							break
+						if element.text=='Yuliverse must have NFT to play':
+							element.click()
+							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
+							break
+						if element.text=='NFT from partners project':
+							element.click()
+							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
+							break
+						if element.text=='https://metalab-1.gitbook.io/the-white-paper-of-yuliverse/':
+							element.click()
+							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
+							log(f'+ Yuliverse Fundamentals Quiz end')
+							break
+						
+						#Manta Network Fundamentals Quiz
+						if element.text=='By using OP Stack, which is almost fully compatible with EVM and Solidity. It utilizes Celestia as the data availability layer, significantly reducing Gas costs, and includes a general ZK circuit. This allows direct calling of SDK or API to implement ZK functionality within the EVM environment.':
+							element.click()
+							log(f'+ Manta Network Fundamentals Quiz begin')
+							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
+							break
+						if elements[y-1].text=='GameFi' and element.text=='All of the above':
+							element.click()
+							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
+							break
+						if element.text=="Manta's Universal Circuits offer ZK-as-a-Service, allowing any Solidity developer to call Manta Pacific contracts through APIs to enable ZK features.":
+							element.click()
+							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
+							break
+						if element.text=='Manta Atlantic is the canary network of Manta Pacific':
+							element.click()
+							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
+							break
+						if element.text=='Andreessen Horowitz':
+							element.click()
+							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
+							log(f'+ Manta Network Fundamentals Quiz end')
+							break
+							
+						#Lifeform Fundamentals Quiz
+						if element.text=='Korea':
+							element.click()
+							log(f'+ Lifeform Fundamentals Quiz begin')
+							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
+							break
+						if elements[y-1].text=='Lifeform token airdrop in the future' and element.text=='All of the above':
+							element.click()
+							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
+							break
+						if element.text=='3000000':
+							element.click()
+							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
+							break
+						if elements[y-1].text=='Metaverse' and element.text=='All of the above':
+							element.click()
+							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
+							break
+						if element.text=='Visual DID':
+							element.click()
+							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
+							log(f'+ Lifeform Fundamentals Quiz end')
+							break
+							
+						#SecondLive Fundamentals Quiz
+						if element.text=='Earn-bounty':
+							element.click()
+							log(f'+ SecondLive Fundamentals Quiz begin')
+							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
+							break
+						if element.text=='https://secondlive.world/creator':
+							element.click()
+							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
+							break
+						if element.text=="SecondLive doesn't support NFT transactions for creators":
+							element.click()
+							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
+							break
+						if element.text=='Earn by creating costumes, Spaces, dance shows':
+							element.click()
+							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
+							break
+						if element.text=='https://docs.secondlive.world/':
+							element.click()
+							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
+							log(f'+ SecondLive Fundamentals Quiz end')
+							break
+						
+						#Map Protocol Fundamentals Quiz
+						if element.text=='light client, ZK, Nakamoto Style, privileged roles':
+							element.click()
+							log(f'+ Map Protocol Fundamentals Quiz begin')
+							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
+							break
+						if elements[y-1].text=='Anyone who wish to contribute and build together' and element.text=='All of the above':
+							element.click()
+							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
+							break
+						if element.text=='Decentralized security (Light-Client & zk)':
+							element.click()
+							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
+							break
+						if element.text=='3':
+							element.click()
+							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
+							break
+						if elements[y-1].text=='On-chain Governance' and element.text=='All of the above':
+							element.click()
+							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
+							log(f'+ Map Protocol Fundamentals Quiz end')
+							break
+						y+=1
+					
+					if try_xpath("//div[@class='style_btn__CFfII hover-item']", True):
+						break
+				log(f'+ test end')
+			else:
+				t+=1
+			time.sleep(10)
 	except Exception as ex:
 		log(ex)
 def metamask_request():
@@ -207,7 +350,7 @@ def close_other_handles():
 
 def log(txt):
     print(txt)
-    file = open("log_web3go.txt", "a")  # append mode
+    file = open("log_task.txt", "a")  # append mode
     file.write(f"{txt} \n")
     file.close()
 

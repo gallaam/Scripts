@@ -4,3 +4,11 @@
 
 Файл web3go.py
 Для ежедневного сбора https://reiki.web3go.xyz/. При запуске на новом аккаунте зарегистрируется и заминтить паспорт, также буду добавлять прохождение тестовых заданий. В файле также надо заполнить 14 строка ref_code='' (необязательно) 15 строка metamask_password=''
+Добавил прохождение 5 тестов
+-Map Protocol Fundamentals Quiz
+-SecondLive Fundamentals Quiz
+-Manta Network Fundamentals Quiz
+-Yuliverse Fundamentals Quiz
+-Lifeform Fundamentals Quiz
+
+Примечание: иногда возникает проблема когда сайт вдруг думает что не замичен паспорт
