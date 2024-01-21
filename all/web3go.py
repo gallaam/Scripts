@@ -131,13 +131,9 @@ def try_task():
 					# Проходим по списку элементов и сохраняем текст в массив
 					y=0
 					for element in elements:
-						log(element.text)
-						log(elements[y-1].text=='Lifeform token airdrop in the future' and element.text=='All of the above')
-						log(elements[y-1].text)
-						log(element.text)
 						
 						#Yuliverse Fundamentals Quiz
-						if element.text=='Purification of Terra  with Yuli common or above NFT (LV50)':
+						if element.text=='Purification of Terra with Yuli common or above NFT (LV50)':
 							element.click()
 							log(f'+ Yuliverse Fundamentals Quiz begin')
 							try_xpath("//div[@class='style_right__qTLXR hover-item']", True)
