@@ -262,69 +262,59 @@ def try_task():
 	except Exception as ex:
 		log(ex)
 def metamask_request():
-
-
-	log(f'+ metamask open')
-	time.sleep(10)
-	driver.switch_to.window(driver.window_handles[-1])
-	if try_xpath(xpath_password, True, 'pnwMY59O',5):
-		log(f'+ password entered')
-		time.sleep(5)
-		if try_xpath(xpath_enter_button, True, '',5):
-			log(f'+ login')
-			time.sleep(5)
-	driver.switch_to.window(driver.window_handles[-1])
-	i=0
-	while i!=1:
-		if not try_xpath(xpath_btn_primary, True):
-		#if len(driver.window_handles) == 1:
-			#log(f'+ success')
-			i+=1
-		#else:
+	timer(10)
+	while True:
+		driver.switch_to.window(driver.window_handles[1])
+		if try_xpath(xpath_password, True, metamask_password,5):
+			log(f'+ password entered')
+			timer(3)
+			if try_xpath(xpath_enter_button, True):
+				log(f'+ login click')
+		else:
+			timer(3)
+			log(f'+ 211')
+			try_xpath(xpath_btn_primary, True)
 			
-				#time.sleep(5)
-	time.sleep(5)
-	driver.switch_to.window(driver.window_handles[0])
+		if len(driver.window_handles) == 1:
+			driver.switch_to.window(driver.window_handles[0])
+			break
 		
 def metamask_login():
-	if try_xpath(xpath_login, True):
-		time.sleep(5)
-		if try_xpath(xpath_connect, True, '',5):
-			log(f'+ metamask open')
-			time.sleep(5)
-			driver.switch_to.window(driver.window_handles[-1])
+	
+	while True:
+		
+		if len(driver.window_handles) == 1:
+			#click connect & click metamask
+			if try_xpath(xpath_login, True):
+				log(f'+ modal open')
+				timer(3)
+				if try_xpath(xpath_connect, True,'',10):
+					log(f'+ metamask open')
+				else:
+					reload_page()
+			
+			timer(3)
+			if len(driver.window_handles) > 1:
+					log(f'+ metamask tab select')
+					driver.switch_to.window(driver.window_handles[1])
+			
+			timer(3)
+		else:
+			driver.switch_to.window(driver.window_handles[1])
 			if try_xpath(xpath_password, True, metamask_password,5):
 				log(f'+ password entered')
-				time.sleep(5)
-				if try_xpath(xpath_enter_button, True, '',5):
-					log(f'+ login')
-					time.sleep(5)
-					driver.switch_to.window(driver.window_handles[-1])
-					i=0
-					time.sleep(5)
-					while i!=1:
-						if len(driver.window_handles) == 1:
-							log(f'+ metamask window closed')
-							i+=1
-						else:
-							if try_xpath(xpath_btn_primary, True, '',5):
-								time.sleep(5)
-					time.sleep(10)
-					if len(driver.window_handles) > 1:
-						driver.switch_to.window(driver.window_handles[-1])
-						i=0
-						while i!=1:
-							if len(driver.window_handles) == 1:
-								log(f'+ metamask window closed')
-								i+=1
-							else:
-								if try_xpath(xpath_btn_primary, True, '',5):
-									time.sleep(5)
+				timer(3)
+				if try_xpath(xpath_enter_button, True):
+					log(f'+ login click')
+				
+			else:
+				timer(3)
+				log(f'+ 111')
+				try_xpath(xpath_btn_primary, True)
+				timer(6)
+				if len(driver.window_handles) == 1:
 					driver.switch_to.window(driver.window_handles[0])
-		else:
-			reload_page()
-	else:
-		reload_page()
+					break
 
 
 def reload_page():
