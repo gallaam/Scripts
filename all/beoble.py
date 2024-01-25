@@ -201,13 +201,13 @@ def try_daily():
 			timer(3)
 			if len(driver.window_handles) > 1:
 				driver.switch_to.window(driver.window_handles[0])
-			if try_xpath("//div[@class='sc-2862f7fd-0 fwDGet']", True) and follow==0:
-				if try_xpath("//button[text()='Follow']", True):
-					log(f'~ Follow 1 accounts')
-					follow+=1
-					#break
-			else:
-				pass
+			if follow==0:
+				if try_xpath("//div[@class='sc-2862f7fd-0 fwDGet']", True):
+					if try_xpath("//button[text()='Follow']", True):
+						log(f'~ Follow 1 accounts')
+						follow+=1
+						#break
+						driver.refresh()
 			
 			#Super reaction block
 			try:
@@ -224,7 +224,7 @@ def try_daily():
 					if try_xpath("//div[text()='Send 1 pts']", True):
 						timer(1)
 						if try_xpath("//button[text()='Confirm and send']", True):
-							log(f'~ Super reaction send')
+							log(f'~ Super reaction complete')
 							sreact+=1
 							driver.refresh()
 				
@@ -243,6 +243,8 @@ def try_daily():
 						r_element.click()
 						log(f'~ React to {react} messages')
 						timer(1)
+						if react>15:
+							break
 						
 			except Exception as ex:
 				pass
