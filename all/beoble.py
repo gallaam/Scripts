@@ -11,9 +11,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 import random
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
 
 metamask_password=''
-
 xpath_check_step_one = "//div[@class='sc-afdafdb-0 clwYnU' and text()='Start chatting in beoble.']"
 xpath_check_step_two = "//button[@class='sc-5f5dcad5-0 esQpMx']"
 
@@ -179,23 +179,78 @@ def try_task():
 def try_daily():
 
 	try:
+		
 		timer(3)
-		if try_xpath("//div[@placeholder='Type a message...']", True, message(),5):
-			if try_xpath("//button[text()='Send']", True):
-				log(f'~ Daily GM')
-		timer(3)
-		co=0
+		follow=0
+		react=0
+		sreact=0
+		msg=0
+		elements = driver.find_elements(By.XPATH, "//div[@data-test-id='virtuoso-scroller']")
 		while True:
-			element = WebDriverWait(driver, 5).until(ec.presence_of_element_located((By.XPATH, "//div[@role='presentation']")))
-			element.click()
-			element.send_keys(Keys.PAGE_UP)
+		
+			if msg<1:
+				if try_xpath("//div[@placeholder='Type a message...']", True, message(),5):
+					if try_xpath("//button[text()='Send']", True):
+						msg+=1
+						log(f'~ Daily {msg} GM')
+
+			try:
+				elements[1].send_keys(Keys.PAGE_UP * 1)
+			except:
+				pass
 			timer(3)
 			if len(driver.window_handles) > 1:
 				driver.switch_to.window(driver.window_handles[0])
-			if try_xpath("//div[@class='sc-2862f7fd-0 fwDGet']", True):
+			if try_xpath("//div[@class='sc-2862f7fd-0 fwDGet']", True) and follow==0:
+				if try_xpath("//button[text()='Follow']", True):
+					log(f'~ Follow 1 accounts')
+					follow+=1
+					#break
+			else:
+				pass
+			
+			#Super reaction block
+			try:
+				
+				if sreact==0:
+					s_element = driver.find_element(By.XPATH, "//div[@class='sc-1932b0ac-1 hJgvGp']")
+					actions = ActionChains(driver)
+					actions.move_to_element(s_element).perform()
+				
+					s_element = driver.find_element(By.XPATH, "//button[@class='sc-5f5dcad5-0 sc-f85573f7-0 bSdNtl dnYQmd sc-81ed977b-0 eRKUXg']")
+					actions = ActionChains(driver)
+					actions.move_to_element(s_element).perform()
+					timer(1)
+					if try_xpath("//div[text()='Send 1 pts']", True):
+						timer(1)
+						if try_xpath("//button[text()='Confirm and send']", True):
+							log(f'~ Super reaction send')
+							sreact+=1
+							driver.refresh()
+				
+							
+					
+
+			except Exception as ex:
+				pass
+				
+			#Reactions block
+			try:
+				if react<15:
+					r_elements = driver.find_elements(By.XPATH, "//div[@class='sc-c0ef3df3-1 bQFwLu']")
+					for r_element in r_elements:
+						react+=1
+						r_element.click()
+						log(f'~ React to {react} messages')
+						timer(1)
+						
+			except Exception as ex:
+				pass
+			#check
+			if react>14 and sreact>0 and msg>0:
+				log(f'~ React to 15 messages complete')
 				break
-		if try_xpath("//button[text()='Follow']", True):
-			log(f'~ Follow 1 accounts')
+
 		timer(3)
 		elements = WebDriverWait(driver, 5).until(
 			ec.presence_of_all_elements_located((By.XPATH, "//button[@class='sc-c58f69d7-0 dOgfhc']"))
