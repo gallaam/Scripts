@@ -185,17 +185,21 @@ def try_daily():
 		react=0
 		sreact=0
 		msg=0
-		elements = driver.find_elements(By.XPATH, "//div[@data-test-id='virtuoso-scroller']")
+		
+		
 		while True:
 		
 			if msg<1:
 				if try_xpath("//div[@placeholder='Type a message...']", True, message(),5):
-					if try_xpath("//button[text()='Send']", True):
+					if try_xpath("//button[@class='sc-5f5dcad5-0 sc-7cd36905-2 esQpMx bMeyzI']", True):
 						msg+=1
 						log(f'~ Daily {msg} GM')
 
 			try:
-				elements[1].send_keys(Keys.PAGE_UP * 1)
+				el = WebDriverWait(driver, 5).until(ec.presence_of_element_located((By.XPATH,"//div[@class='sc-f3c65d15-8 bKHeJr']")))
+				actions = ActionChains(driver)
+				actions.move_to_element(el).perform()
+				el.send_keys(Keys.PAGE_UP * 1)
 			except:
 				pass
 			timer(3)
@@ -213,7 +217,7 @@ def try_daily():
 			try:
 				
 				if sreact==0:
-					s_element = driver.find_element(By.XPATH, "//div[@class='sc-1932b0ac-1 hJgvGp']")
+					s_element = driver.find_element(By.XPATH, "//button[@class='sc-5f5dcad5-0 sc-f85573f7-0 bSdNtl dnYQmd sc-81ed977b-0 eRKUXg']")
 					actions = ActionChains(driver)
 					actions.move_to_element(s_element).perform()
 				
