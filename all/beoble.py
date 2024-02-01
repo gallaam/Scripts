@@ -196,7 +196,7 @@ def try_daily():
 						log(f'~ Daily {msg} GM')
 
 			try:
-				el = WebDriverWait(driver, 5).until(ec.presence_of_element_located((By.XPATH,"//div[@class='sc-f3c65d15-8 bKHeJr']")))
+				el = WebDriverWait(driver, 5).until(ec.presence_of_element_located((By.XPATH,"//div[@class='sc-651b6e4d-8 dBLXFp']")))
 				actions = ActionChains(driver)
 				actions.move_to_element(el).perform()
 				el.send_keys(Keys.PAGE_UP * 1)
