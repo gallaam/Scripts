@@ -13,7 +13,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 
-metamask_password=''
+metamask_password='password'
 xpath_check_step_one = "//div[@class='sc-afdafdb-0 clwYnU' and text()='Start chatting in beoble.']"
 xpath_check_step_two = "//button[@class='sc-5f5dcad5-0 esQpMx']"
 
@@ -186,12 +186,11 @@ def try_daily():
 		sreact=0
 		msg=0
 		
-		
 		while True:
 		
 			if msg<1:
 				if try_xpath("//div[@placeholder='Type a message...']", True, message(),5):
-					if try_xpath("//button[@class='sc-5f5dcad5-0 sc-7cd36905-2 esQpMx bMeyzI']", True):
+					if try_xpath("//button[@class='sc-5f5dcad5-0 sc-75ab22bc-2 esQpMx cguKbR']", True):
 						msg+=1
 						log(f'~ Daily {msg} GM')
 
@@ -203,6 +202,9 @@ def try_daily():
 			except:
 				pass
 			timer(3)
+			if try_xpath("//div[@class='sc-51e2b72b-1 ggNrHp']", False):
+				driver.refresh()
+			
 			if len(driver.window_handles) > 1:
 				driver.switch_to.window(driver.window_handles[0])
 			if follow==0:
@@ -240,24 +242,24 @@ def try_daily():
 				
 			#Reactions block
 			try:
-				if react<15:
+				if react<18:
 					r_elements = driver.find_elements(By.XPATH, "//div[@class='sc-c0ef3df3-1 bQFwLu']")
 					for r_element in r_elements:
 						react+=1
 						r_element.click()
 						log(f'~ React to {react} messages')
 						timer(1)
-						if react>15:
+						if react>18:
 							break
 						
 			except Exception as ex:
 				pass
 			#check
-			if react>14 and sreact>0 and msg>0:
+			if react>17 and sreact>0 and msg>0:
 				log(f'~ React to 15 messages complete')
 				break
 
-		timer(3)
+		timer(13)
 		elements = WebDriverWait(driver, 5).until(
 			ec.presence_of_all_elements_located((By.XPATH, "//button[@class='sc-c58f69d7-0 dOgfhc']"))
 		)
